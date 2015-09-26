@@ -2,28 +2,32 @@
 
 
 
-tile::tile(TerrainType terrain)
-{
-    m_terrain = terrain;
-    m_structure = NO_STRUCTRE;
-}
+Tile::Tile(TerrainType terrain):
+    m_terrain  (terrain),
+    m_structure (NO_STRUCTRE)
+{}
+
+Tile::Tile(const Tile &copy):
+    m_terrain (copy.terrain())
+{ }
 
 
-tile::TerrainType tile::terrain() const
+Tile::TerrainType Tile::terrain() const
 {
     return m_terrain;
 }
 
-void tile::setTerrain(const TerrainType &terrain)
+void Tile::setTerrain(const TerrainType &terrain)
 {
     m_terrain = terrain;
+    emit terrainChanged(terrain);
 }
-tile::StructureType tile::structure() const
+Tile::StructureType Tile::structure() const
 {
     return m_structure;
 }
 
-void tile::setStructure(const StructureType &structure)
+void Tile::setStructure(const StructureType &structure)
 {
     m_structure = structure;
 }

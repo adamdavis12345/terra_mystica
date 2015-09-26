@@ -1,9 +1,11 @@
 #ifndef TILE_H
 #define TILE_H
+#include <QObject>
 
-
-class tile
+class Tile: public QObject
 {
+    Q_OBJECT
+    Q_PROPERTY(TerrainType terrain READ terrain WRITE setTerrain NOTIFY terrainChanged)
 public:
     enum TerrainType {
         DESERT = 0,
@@ -16,6 +18,8 @@ public:
         RIVER,
         NO_TERRAIN
     };
+    Q_ENUM(TerrainType)
+
     enum StructureType {
         NO_STRUCTRE = 0,
         DWELLING,
@@ -24,13 +28,18 @@ public:
         STRONGHOLD,
         SANCTUARY
     };
-    tile(TerrainType);
+    Q_ENUM(StructureType)
+    Tile(TerrainType);
+    Tile(const Tile& copy);
 
     TerrainType terrain() const;
     void setTerrain(const TerrainType &terrain);
 
     StructureType structure() const;
     void setStructure(const StructureType &structure);
+
+signals:
+    void terrainChanged(TerrainType terrain);
 
 private:
     TerrainType m_terrain;

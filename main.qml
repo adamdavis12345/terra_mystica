@@ -32,13 +32,18 @@ ApplicationWindow {
         cellWidth: parent.width/13
         delegate: Rectangle{
             property int blah : modelData/13
-            property point mypoint: Qt.point(modelData%13,blah)
+            property point mypoint: Qt.point(blah,modelData%13)
             height: boardGrid.cellHeight
             width: boardGrid.cellWidth
             property variant colorArray: ["yellow","darkgreen","brown","purple","green","grey","red","blue","clear"]
             color: colorArray[board.getTileFromOffset(mypoint).terrain]
-        }
+            Label {
+                            anchors.centerIn: parent
+                            text: mypoint.x + ", " + mypoint.y + "\n" + board.getTileFromOffset(mypoint).terrain
+                            font.pointSize: 14
+                        }
 
+        }
     }
 
     MessageDialog {

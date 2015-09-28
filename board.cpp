@@ -40,8 +40,6 @@ Board::Board()
 }
 
 Tile* Board::getTileFromOffset(QPoint point) {
-    qDebug()<<point.x()<<"\n"<<point.y()<<"\n";
-    qDebug() << tileArray[point.y()][point.x()].terrain();
     return &tileArray[point.x()][point.y()];
 }
 

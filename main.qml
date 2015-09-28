@@ -37,11 +37,10 @@ ApplicationWindow {
             width: boardGrid.cellWidth
             property variant colorArray: ["yellow","darkgreen","brown","purple","green","grey","red","blue","clear"]
             color: colorArray[board.getTileFromOffset(mypoint).terrain]
-            Label {
-                            anchors.centerIn: parent
-                            text: mypoint.x + ", " + mypoint.y + "\n" + board.getTileFromOffset(mypoint).terrain
-                            font.pointSize: 14
-                        }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {console.log(mypoint);console.log(board.getTileFromOffset(mypoint))}
+            }
 
         }
     }

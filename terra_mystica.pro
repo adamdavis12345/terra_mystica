@@ -4,7 +4,8 @@ QT += qml quick widgets
 
 SOURCES += main.cpp \
     tile.cpp \
-    board.cpp
+    board.cpp \
+    player.cpp
 
 RESOURCES += qml.qrc
 
@@ -16,4 +17,5 @@ include(deployment.pri)
 
 HEADERS += \
     tile.h \
-    board.h
+    board.h \
+    player.h
